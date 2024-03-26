@@ -10,6 +10,8 @@ jobs:
         steps:
             - name: Checkout repository
               uses: actions/checkout@v2
+              with:
+                  persist-credentials: false # 이 줄을 추가합니다
 
             - name: Set up Python
               uses: actions/setup-python@v2
@@ -26,8 +28,12 @@ jobs:
 
             - name: Commit file
               run: |
-                  git config --global user.name 'koorukuroo'
-                  git config --global user.email 'koorukuroo@example.com'
+                  git config --local user.name 'jody816'
+                  git config --local user.email 'jody816@naver.com'
                   git add naver.txt
                   git commit -m "Add naver.txt"
-                  git push
+            - name: Push
+              uses: ad-m/github-push-action@master
+              with:
+                  branch: "main"
+                  github_token: ${{ secrets.GH_TOKEN }} # 여기서 GH_TOKEN은 GitHub Secrets에 저장된 PAT입니다.
