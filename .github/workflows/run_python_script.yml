@@ -37,4 +37,3 @@ jobs:
               with:
                   branch: "main"
                   github_token: ${{ secrets.GH_TOKEN }} # 여기서 GH_TOKEN은 GitHub Secrets에 저장된 PAT입니다.
-                  
